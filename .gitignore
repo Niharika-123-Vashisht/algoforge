@@ -10,6 +10,7 @@ node_modules/
 # IDE / Editor
 .vscode/
 .idea/
+extensions/
 
 # Python
 __pycache__/
