@@ -1,0 +1,1635 @@
+[
+  {
+    "title": "Hello World",
+    "description": "Print exactly one line: Hello, World!\n\n**Input Format:** None\n\n**Output Format:** A single line containing exactly: Hello, World!\n\n**Constraints:** None",
+    "difficulty": "easy",
+    "sample_input": "",
+    "sample_output": "Hello, World!",
+    "test_cases": [
+      {
+        "input_data": "",
+        "expected_output": "Hello, World!",
+        "is_sample": true
+      },
+      {
+        "input_data": "",
+        "expected_output": "Hello, World!",
+        "is_sample": false
+      },
+      {
+        "input_data": "",
+        "expected_output": "Hello, World!",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Strings"
+    ],
+    "companies": [
+      "Google"
+    ]
+  },
+  {
+    "title": "Sum of Two Numbers",
+    "description": "Read two integers from stdin and output their sum.\n\n**Input Format:** Two lines, each containing one integer.\n\n**Output Format:** A single integer - the sum.\n\n**Constraints:** -10^9 â‰¤ a, b â‰¤ 10^9",
+    "difficulty": "easy",
+    "sample_input": "2\n3",
+    "sample_output": "5",
+    "test_cases": [
+      {
+        "input_data": "2\n3",
+        "expected_output": "5",
+        "is_sample": true
+      },
+      {
+        "input_data": "10\n20",
+        "expected_output": "30",
+        "is_sample": false
+      },
+      {
+        "input_data": "-5\n5",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Math"
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  },
+  {
+    "title": "Maximum in Array",
+    "description": "Given an array of n integers, find and print the maximum element.\n\n**Input Format:** First line: n (size). Second line: n space-separated integers.\n\n**Output Format:** A single integer - the maximum value.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^5, -10^9 â‰¤ elements â‰¤ 10^9",
+    "difficulty": "easy",
+    "sample_input": "5\n3 1 4 1 5",
+    "sample_output": "5",
+    "test_cases": [
+      {
+        "input_data": "5\n3 1 4 1 5",
+        "expected_output": "5",
+        "is_sample": true
+      },
+      {
+        "input_data": "3\n-1 -5 -3",
+        "expected_output": "-1",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\n42",
+        "expected_output": "42",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Arrays"
+    ],
+    "companies": [
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Reverse a String",
+    "description": "Given a string s, reverse it and output the result.\n\n**Input Format:** A single line containing the string s.\n\n**Output Format:** The reversed string.\n\n**Constraints:** 1 â‰¤ |s| â‰¤ 1000",
+    "difficulty": "easy",
+    "sample_input": "hello",
+    "sample_output": "olleh",
+    "test_cases": [
+      {
+        "input_data": "hello",
+        "expected_output": "olleh",
+        "is_sample": true
+      },
+      {
+        "input_data": "abc",
+        "expected_output": "cba",
+        "is_sample": false
+      },
+      {
+        "input_data": "a",
+        "expected_output": "a",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Strings"
+    ],
+    "companies": [
+      "Meta"
+    ]
+  },
+  {
+    "title": "Two Sum",
+    "description": "Given an array of n integers and a target, find two indices (0-based) whose values add up to target. Assume exactly one solution exists.\n\n**Input Format:** First line: n and target (space-separated). Second line: n space-separated integers.\n\n**Output Format:** Two space-separated integers - the indices.\n\n**Constraints:** 2 â‰¤ n â‰¤ 10^4, -10^9 â‰¤ target, elements â‰¤ 10^9",
+    "difficulty": "easy",
+    "sample_input": "4 9\n2 7 11 15",
+    "sample_output": "0 1",
+    "test_cases": [
+      {
+        "input_data": "4 9\n2 7 11 15",
+        "expected_output": "0 1",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 6\n3 2 4",
+        "expected_output": "1 2",
+        "is_sample": false
+      },
+      {
+        "input_data": "2 6\n3 3",
+        "expected_output": "0 1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Hash Map",
+      "Arrays"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Factorial (Recursion)",
+    "description": "Compute n! (n factorial) using recursion. 0! = 1.\n\n**Input Format:** A single integer n.\n\n**Output Format:** n!\n\n**Constraints:** 0 â‰¤ n â‰¤ 15",
+    "difficulty": "easy",
+    "sample_input": "5",
+    "sample_output": "120",
+    "test_cases": [
+      {
+        "input_data": "5",
+        "expected_output": "120",
+        "is_sample": true
+      },
+      {
+        "input_data": "0",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "6",
+        "expected_output": "720",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Recursion"
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  },
+  {
+    "title": "Bubble Sort Count",
+    "description": "Given an array, count the number of swaps needed to sort it using bubble sort.\n\n**Input Format:** First line: n. Second line: n space-separated integers.\n\n**Output Format:** Number of swaps.\n\n**Constraints:** 1 â‰¤ n â‰¤ 100",
+    "difficulty": "easy",
+    "sample_input": "5\n2 3 1 5 4",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "5\n2 3 1 5 4",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "3\n3 2 1",
+        "expected_output": "3",
+        "is_sample": false
+      },
+      {
+        "input_data": "2\n1 2",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sorting"
+    ],
+    "companies": [
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Binary Search",
+    "description": "Given a sorted array and target, return the 0-based index of target, or -1 if not found.\n\n**Input Format:** First line: n and target. Second line: n sorted integers.\n\n**Output Format:** Index or -1.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^5",
+    "difficulty": "easy",
+    "sample_input": "5 4\n1 2 3 4 5",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "5 4\n1 2 3 4 5",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 7\n1 3 5",
+        "expected_output": "-1",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n1",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Binary Search"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Valid Palindrome",
+    "description": "Given a string, determine if it is a palindrome (reads same forwards and backwards). Ignore non-alphanumeric chars and case.\n\n**Input Format:** A single line string.\n\n**Output Format:** YES or NO.\n\n**Constraints:** 1 â‰¤ |s| â‰¤ 2Ã—10^5",
+    "difficulty": "easy",
+    "sample_input": "A man, a plan, a canal: Panama",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "A man, a plan, a canal: Panama",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "race a car",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "abba",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Strings"
+    ],
+    "companies": [
+      "Meta",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Max Sum Subarray of Size K",
+    "description": "Given an array and integer k, find the maximum sum of any contiguous subarray of size k.\n\n**Input Format:** First line: n and k. Second line: n integers.\n\n**Output Format:** Maximum sum.\n\n**Constraints:** 1 â‰¤ k â‰¤ n â‰¤ 10^5",
+    "difficulty": "easy",
+    "sample_input": "5 2\n2 3 1 5 4",
+    "sample_output": "9",
+    "test_cases": [
+      {
+        "input_data": "5 2\n2 3 1 5 4",
+        "expected_output": "9",
+        "is_sample": true
+      },
+      {
+        "input_data": "4 4\n1 2 3 4",
+        "expected_output": "10",
+        "is_sample": false
+      },
+      {
+        "input_data": "3 1\n-1 -2 -3",
+        "expected_output": "-1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sliding Window",
+      "Arrays"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing only '(', ')', '{', '}', '[', ']', determine if the brackets are balanced.\n\n**Input Format:** A single line string.\n\n**Output Format:** YES or NO.\n\n**Constraints:** 1 â‰¤ |s| â‰¤ 10^4",
+    "difficulty": "easy",
+    "sample_input": "()[]{}",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "()[]{}",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "(]",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "([)]",
+        "expected_output": "NO",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Stack"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Climbing Stairs",
+    "description": "You climb stairs. Each step you can take 1 or 2 steps. How many distinct ways to reach the top (n steps)?\n\n**Input Format:** A single integer n.\n\n**Output Format:** Number of distinct ways.\n\n**Constraints:** 1 â‰¤ n â‰¤ 45",
+    "difficulty": "easy",
+    "sample_input": "3",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "3",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "2",
+        "expected_output": "2",
+        "is_sample": false
+      },
+      {
+        "input_data": "4",
+        "expected_output": "5",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "DP"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Best Time to Buy and Sell Stock",
+    "description": "Given array of daily stock prices, find max profit from one buy and one sell. If no profit possible, output 0.\n\n**Input Format:** First line: n. Second line: n integers (prices).\n\n**Output Format:** Maximum profit.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^5, 0 â‰¤ price â‰¤ 10^4",
+    "difficulty": "easy",
+    "sample_input": "6\n7 1 5 3 6 4",
+    "sample_output": "5",
+    "test_cases": [
+      {
+        "input_data": "6\n7 1 5 3 6 4",
+        "expected_output": "5",
+        "is_sample": true
+      },
+      {
+        "input_data": "5\n7 6 4 3 1",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "2\n1 2",
+        "expected_output": "1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Greedy",
+      "Arrays",
+      "DP"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Count Set Bits",
+    "description": "Given a positive integer n, count the number of 1s in its binary representation.\n\n**Input Format:** A single integer n.\n\n**Output Format:** Number of set bits.\n\n**Constraints:** 0 â‰¤ n â‰¤ 10^9",
+    "difficulty": "easy",
+    "sample_input": "11",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "11",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "0",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "15",
+        "expected_output": "4",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Bit Manipulation"
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  },
+  {
+    "title": "FizzBuzz",
+    "description": "Given an integer n, for each integer i from 1 to n inclusive, print one of the following: if i is divisible by 3 and 5 print \"FizzBuzz\"; if divisible by 3 print \"Fizz\"; if divisible by 5 print \"Buzz\"; otherwise print i. Output one value per line.\n\n**Input Format:** A single integer n.\n\n**Output Format:** n lines - each line is \"Fizz\", \"Buzz\", \"FizzBuzz\", or the number i.\n\n**Constraints:** 1 â‰¤ n â‰¤ 100",
+    "difficulty": "easy",
+    "sample_input": "15",
+    "sample_output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+    "test_cases": [
+      {
+        "input_data": "15",
+        "expected_output": "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\nFizz\n13\n14\nFizzBuzz",
+        "is_sample": true
+      },
+      {
+        "input_data": "5",
+        "expected_output": "1\n2\nFizz\n4\nBuzz",
+        "is_sample": false
+      },
+      {
+        "input_data": "3",
+        "expected_output": "1\n2\nFizz",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Math"
+    ],
+    "companies": [
+      "Meta"
+    ]
+  },
+  {
+    "title": "Contains Duplicate",
+    "description": "Given an array of integers, output YES if any value appears at least twice, else NO.\n\n**Input Format:** First line: n. Second line: n integers.\n\n**Output Format:** YES or NO.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^5",
+    "difficulty": "easy",
+    "sample_input": "4\n1 2 3 1",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "4\n1 2 3 1",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "3\n1 2 3",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "2\n1 1",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Hash Map",
+      "Arrays"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Move Zeros",
+    "description": "Given an array, move all zeros to the end while preserving the relative order of non-zero elements.\n\n**Input Format:** First line: n. Second line: n integers.\n\n**Output Format:** Space-separated integers (modified array).\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^5",
+    "difficulty": "easy",
+    "sample_input": "5\n0 1 0 3 12",
+    "sample_output": "1 3 12 0 0",
+    "test_cases": [
+      {
+        "input_data": "5\n0 1 0 3 12",
+        "expected_output": "1 3 12 0 0",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\n0 1",
+        "expected_output": "1 0",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n1 0 0",
+        "expected_output": "1 0 0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Arrays"
+    ],
+    "companies": [
+      "Meta",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Longest Substring Without Repeating",
+    "description": "Given a string s, find the length of the longest substring without repeating characters. A substring is a contiguous non-empty sequence of characters within a string. For example, for \"abcabcbb\" the longest substring without repeating characters is \"abc\" with length 3.\n\n**Input Format:** A single line containing the string s.\n\n**Output Format:** A single integer - the length of the longest substring without repeating characters.\n\n**Constraints:** 0 â‰¤ |s| â‰¤ 5Ã—10^4, s consists of English letters, digits, symbols and spaces",
+    "difficulty": "medium",
+    "sample_input": "abcabcbb",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "abcabcbb",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "bbbbb",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "pwwkew",
+        "expected_output": "3",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sliding Window",
+      "Strings"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Merge Two Sorted Arrays",
+    "description": "Given two integer arrays nums1 and nums2, sorted in non-decreasing order, merge them into a single sorted array. The merged array should be sorted in non-decreasing order. You may assume both input arrays are already sorted.\n\n**Input Format:** First line: n m (sizes of the two arrays). Second line: n space-separated integers (first array). Third line: m space-separated integers (second array).\n\n**Output Format:** Space-separated merged sorted array.\n\n**Constraints:** 1 â‰¤ n, m â‰¤ 10^5, -10^9 â‰¤ elements â‰¤ 10^9",
+    "difficulty": "medium",
+    "sample_input": "3 3\n1 3 5\n2 4 6",
+    "sample_output": "1 2 3 4 5 6",
+    "test_cases": [
+      {
+        "input_data": "3 3\n1 3 5\n2 4 6",
+        "expected_output": "1 2 3 4 5 6",
+        "is_sample": true
+      },
+      {
+        "input_data": "2 1\n1 2\n3",
+        "expected_output": "1 2 3",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n1\n1",
+        "expected_output": "1 1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Arrays",
+      "Sorting"
+    ],
+    "companies": [
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Group Anagrams",
+    "description": "Given n strings, group them by anagrams. Output each group on a new line as space-separated words. Order of groups doesn't matter.\n\n**Input Format:** First line: n. Next n lines: strings.\n\n**Output Format:** Each group on one line, words space-separated.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^4, 1 â‰¤ |each| â‰¤ 100",
+    "difficulty": "medium",
+    "sample_input": "6\neat\ntea\ntan\nate\nnat\nbat",
+    "sample_output": "eat tea ate\nbat\ntan nat",
+    "test_cases": [
+      {
+        "input_data": "6\neat\ntea\ntan\nate\nnat\nbat",
+        "expected_output": "eat tea ate\nbat\ntan nat",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\na\nb",
+        "expected_output": "a\nb",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\na",
+        "expected_output": "a",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Hash Map",
+      "Strings",
+      "Sorting"
+    ],
+    "companies": [
+      "Amazon",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Fibonacci (Memoization)",
+    "description": "Compute the nth Fibonacci number (0-indexed). F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2).\n\n**Input Format:** A single integer n.\n\n**Output Format:** F(n).\n\n**Constraints:** 0 â‰¤ n â‰¤ 40",
+    "difficulty": "easy",
+    "sample_input": "10",
+    "sample_output": "55",
+    "test_cases": [
+      {
+        "input_data": "10",
+        "expected_output": "55",
+        "is_sample": true
+      },
+      {
+        "input_data": "0",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "5",
+        "expected_output": "5",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Recursion"
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  },
+  {
+    "title": "Kth Largest in Array",
+    "description": "Given an array and k, find the kth largest element (1-indexed, so 1st largest is max).\n\n**Input Format:** First line: n and k. Second line: n integers.\n\n**Output Format:** The kth largest element.\n\n**Constraints:** 1 â‰¤ k â‰¤ n â‰¤ 10^5",
+    "difficulty": "medium",
+    "sample_input": "6 2\n3 2 1 5 6 4",
+    "sample_output": "5",
+    "test_cases": [
+      {
+        "input_data": "6 2\n3 2 1 5 6 4",
+        "expected_output": "5",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 1\n1 2 3",
+        "expected_output": "3",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n5",
+        "expected_output": "5",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sorting",
+      "Arrays",
+      "Heap"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Search in Rotated Sorted Array",
+    "description": "There is an integer array nums sorted in ascending order that has been rotated at an unknown pivot. For example, [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]. Given the array and a target value, return the 0-based index of target if it is in the array, or -1 if it is not.\n\n**Input Format:** First line: n and target (space-separated). Second line: n integers representing the rotated sorted array.\n\n**Output Format:** A single integer - the 0-based index of target, or -1 if not found.\n\n**Constraints:** 1 â‰¤ n â‰¤ 5000, -10^4 â‰¤ nums[i], target â‰¤ 10^4",
+    "difficulty": "medium",
+    "sample_input": "7 0\n4 5 6 7 0 1 2",
+    "sample_output": "4",
+    "test_cases": [
+      {
+        "input_data": "7 0\n4 5 6 7 0 1 2",
+        "expected_output": "4",
+        "is_sample": true
+      },
+      {
+        "input_data": "4 3\n4 5 6 7",
+        "expected_output": "-1",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n1",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Binary Search",
+      "Arrays"
+    ],
+    "companies": [
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Container With Most Water",
+    "description": "Given n vertical lines (heights), find two lines that form a container with maximum area.\n\n**Input Format:** First line: n. Second line: n integers (heights).\n\n**Output Format:** Maximum area.\n\n**Constraints:** 2 â‰¤ n â‰¤ 10^5, 0 â‰¤ height â‰¤ 10^4",
+    "difficulty": "medium",
+    "sample_input": "9\n1 8 6 2 5 4 8 3 7",
+    "sample_output": "49",
+    "test_cases": [
+      {
+        "input_data": "9\n1 8 6 2 5 4 8 3 7",
+        "expected_output": "49",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\n1 1",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n4 3 2",
+        "expected_output": "4",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Arrays",
+      "Greedy"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Minimize Maximum Subarray Sum",
+    "description": "You are given an array of integers and an integer k. Split the array into k non-empty contiguous subarrays. The score of a split is the largest sum of any subarray. Return the minimum possible score. For example, splitting [7,2,5,10,8] into 2 subarrays can give [7,2,5] and [10,8] with max sum 18.\n\n**Input Format:** First line: n and k (space-separated). Second line: n non-negative integers.\n\n**Output Format:** A single integer - the minimum possible maximum subarray sum.\n\n**Constraints:** 1 â‰¤ k â‰¤ n â‰¤ 1000, 0 â‰¤ nums[i] â‰¤ 10^6",
+    "difficulty": "medium",
+    "sample_input": "5 2\n7 2 5 10 8",
+    "sample_output": "18",
+    "test_cases": [
+      {
+        "input_data": "5 2\n7 2 5 10 8",
+        "expected_output": "18",
+        "is_sample": true
+      },
+      {
+        "input_data": "1 1\n1",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "3 3\n1 2 3",
+        "expected_output": "3",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Binary Search",
+      "Arrays"
+    ],
+    "companies": [
+      "Google"
+    ]
+  },
+  {
+    "title": "Evaluate Reverse Polish Notation",
+    "description": "You are given an array of strings tokens that represents a valid arithmetic expression in Reverse Polish Notation (postfix notation). Valid operators are +, -, *, and /. Each operand may be an integer or another expression. The division between two integers truncates toward zero. Evaluate the expression and return the result. For example, [\"2\",\"1\",\"+\",\"3\",\"*\"] evaluates to ((2 + 1) * 3) = 9.\n\n**Input Format:** A single line of space-separated tokens (integers or operators +, -, *, /).\n\n**Output Format:** A single integer - the result of the expression.\n\n**Constraints:** 1 â‰¤ tokens â‰¤ 10^4, -200 â‰¤ token value â‰¤ 200",
+    "difficulty": "medium",
+    "sample_input": "2 1 + 3 *",
+    "sample_output": "9",
+    "test_cases": [
+      {
+        "input_data": "2 1 + 3 *",
+        "expected_output": "9",
+        "is_sample": true
+      },
+      {
+        "input_data": "4 13 5 / +",
+        "expected_output": "6",
+        "is_sample": false
+      },
+      {
+        "input_data": "10 6 9 3 + -11 * / * 17 + 5 +",
+        "expected_output": "22",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Stack"
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  },
+  {
+    "title": "Coin Change",
+    "description": "Given coins denominations and amount, return minimum number of coins to make amount. If impossible, -1.\n\n**Input Format:** First line: n (coin count) and amount. Second line: n coin values.\n\n**Output Format:** Minimum coins or -1.\n\n**Constraints:** 1 â‰¤ n â‰¤ 12, 0 â‰¤ amount â‰¤ 10^4",
+    "difficulty": "medium",
+    "sample_input": "3 11\n1 2 5",
+    "sample_output": "3",
+    "test_cases": [
+      {
+        "input_data": "3 11\n1 2 5",
+        "expected_output": "3",
+        "is_sample": true
+      },
+      {
+        "input_data": "1 3\n2",
+        "expected_output": "-1",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 0\n1",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "DP"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Jump Game",
+    "description": "Array represents max jump from each index. Can you reach the last index? Output YES or NO.\n\n**Input Format:** First line: n. Second line: n non-negative integers.\n\n**Output Format:** YES or NO.\n\n**Constraints:** 1 â‰¤ n â‰¤ 10^4",
+    "difficulty": "medium",
+    "sample_input": "5\n2 3 1 1 4",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "5\n2 3 1 1 4",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "5\n3 2 1 0 4",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\n0",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Greedy",
+      "Arrays",
+      "DP"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Power of Two",
+    "description": "Given integer n, output YES if n is a power of 2, else NO.\n\n**Input Format:** A single integer n.\n\n**Output Format:** YES or NO.\n\n**Constraints:** -2^31 â‰¤ n â‰¤ 2^31 - 1",
+    "difficulty": "easy",
+    "sample_input": "16",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "16",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "3",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "1",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Bit Manipulation"
+    ],
+    "companies": [
+      "Google"
+    ]
+  },
+  {
+    "title": "GCD of Two Numbers",
+    "description": "Compute the greatest common divisor of two positive integers using Euclidean algorithm.\n\n**Input Format:** Two space-separated integers a and b.\n\n**Output Format:** GCD(a, b).\n\n**Constraints:** 1 â‰¤ a, b â‰¤ 10^9",
+    "difficulty": "easy",
+    "sample_input": "48 18",
+    "sample_output": "6",
+    "test_cases": [
+      {
+        "input_data": "48 18",
+        "expected_output": "6",
+        "is_sample": true
+      },
+      {
+        "input_data": "7 5",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "100 50",
+        "expected_output": "50",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Math"
+    ],
+    "companies": [
+      "Google"
+    ]
+  },
+  {
+    "title": "Longest Palindromic Substring",
+    "description": "Given a string s, return the longest palindromic substring in s. A palindrome reads the same forward and backward. For example, \"babad\" has palindromic substrings \"bab\" and \"aba\"; the longest is \"bab\". If multiple solutions exist, output any valid one.\n\n**Input Format:** A single line containing the string s.\n\n**Output Format:** The longest palindromic substring. If multiple exist, any valid one.\n\n**Constraints:** 1 â‰¤ |s| â‰¤ 1000, s consists only of printable ASCII characters",
+    "difficulty": "medium",
+    "sample_input": "babad",
+    "sample_output": "bab",
+    "test_cases": [
+      {
+        "input_data": "babad",
+        "expected_output": "bab",
+        "is_sample": true
+      },
+      {
+        "input_data": "cbbd",
+        "expected_output": "bb",
+        "is_sample": false
+      },
+      {
+        "input_data": "a",
+        "expected_output": "a",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Strings"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Implement Queue using Stacks",
+    "description": "Implement a FIFO queue using only two stacks. Support push, pop, peek, empty.\n\n**Input Format:** First line: number of operations. Then operations: PUSH x, POP, PEEK, EMPTY.\n\n**Output Format:** For POP/PEEK output value. For EMPTY output true/false.\n\n**Constraints:** 1 â‰¤ ops â‰¤ 100",
+    "difficulty": "medium",
+    "sample_input": "5\nPUSH 1\nPUSH 2\nPEEK\nPOP\nEMPTY",
+    "sample_output": "1\n1\nfalse",
+    "test_cases": [
+      {
+        "input_data": "5\nPUSH 1\nPUSH 2\nPEEK\nPOP\nEMPTY",
+        "expected_output": "1\n1\nfalse",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\nPUSH 10\nPOP",
+        "expected_output": "10",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\nEMPTY",
+        "expected_output": "true",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Stack"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Longest Increasing Subsequence",
+    "description": "Given an integer array nums, return the length of the longest strictly increasing subsequence. A subsequence is derived by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] has LIS length 3 ([3,6,7] or [2,7]).\n\n**Input Format:** First line: n (array size). Second line: n space-separated integers.\n\n**Output Format:** A single integer - the length of the longest strictly increasing subsequence.\n\n**Constraints:** 1 â‰¤ n â‰¤ 2500, -10^4 â‰¤ nums[i] â‰¤ 10^4",
+    "difficulty": "medium",
+    "sample_input": "8\n10 9 2 5 3 7 101 18",
+    "sample_output": "4",
+    "test_cases": [
+      {
+        "input_data": "8\n10 9 2 5 3 7 101 18",
+        "expected_output": "4",
+        "is_sample": true
+      },
+      {
+        "input_data": "4\n1 2 3 4",
+        "expected_output": "4",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\n1",
+        "expected_output": "1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "DP",
+      "Arrays"
+    ],
+    "companies": [
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Single Number",
+    "description": "Array has one element that appears once; every other appears twice. Find the single one.\n\n**Input Format:** First line: n. Second line: n integers.\n\n**Output Format:** The single number.\n\n**Constraints:** 1 â‰¤ n â‰¤ 3Ã—10^4",
+    "difficulty": "easy",
+    "sample_input": "5\n2 2 1 4 4",
+    "sample_output": "1",
+    "test_cases": [
+      {
+        "input_data": "5\n2 2 1 4 4",
+        "expected_output": "1",
+        "is_sample": true
+      },
+      {
+        "input_data": "1\n1",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n4 1 4",
+        "expected_output": "1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Bit Manipulation",
+      "Arrays"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Two Sum II - Input Array Is Sorted",
+    "description": "Given a 1-indexed array of integers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target. Return the 1-indexed indices of the two numbers. You may assume that each input has exactly one solution and you may not use the same element twice.\n\n**Input Format:** First line: n (array size) and target. Second line: n space-separated sorted integers.\n\n**Output Format:** Two space-separated integers (1-indexed indices).\n\n**Constraints:** 2 â‰¤ n â‰¤ 3Ã—10^4, -1000 â‰¤ numbers[i] â‰¤ 1000, -1000 â‰¤ target â‰¤ 1000",
+    "difficulty": "medium",
+    "sample_input": "4 9\n2 7 11 15",
+    "sample_output": "1 2",
+    "test_cases": [
+      {
+        "input_data": "4 9\n2 7 11 15",
+        "expected_output": "1 2",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 6\n2 3 4",
+        "expected_output": "1 3",
+        "is_sample": false
+      },
+      {
+        "input_data": "2 6\n3 3",
+        "expected_output": "1 2",
+        "is_sample": false
+      },
+      {
+        "input_data": "5 0\n-3 -1 0 1 3",
+        "expected_output": "2 4",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Arrays",
+      "Binary Search"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "LRU Cache",
+    "description": "Design a data structure that follows the constraints of a Least Recently Used (LRU) cache. Implement get(key) and put(key, value). get returns the value if key exists, else -1. put updates the value if key exists, otherwise inserts. When capacity is exceeded, invalidate the least recently used item.\n\n**Input Format:** First line: capacity. Then each line: GET k or PUT k v (k=key, v=value).\n\n**Output Format:** For each GET, output the value or -1 on a new line.\n\n**Constraints:** 1 â‰¤ capacity â‰¤ 3000, 0 â‰¤ key, value â‰¤ 10^4, 1 â‰¤ operations â‰¤ 10^5",
+    "difficulty": "hard",
+    "sample_input": "2\nPUT 1 1\nPUT 2 2\nGET 1\nPUT 3 3\nGET 2\nPUT 4 4\nGET 1\nGET 3\nGET 4",
+    "sample_output": "1\n-1\n-1\n3\n4",
+    "test_cases": [
+      {
+        "input_data": "2\nPUT 1 1\nPUT 2 2\nGET 1\nPUT 3 3\nGET 2\nPUT 4 4\nGET 1\nGET 3\nGET 4",
+        "expected_output": "1\n-1\n-1\n3\n4",
+        "is_sample": true
+      },
+      {
+        "input_data": "1\nPUT 1 1\nGET 1\nPUT 2 2\nGET 1\nGET 2",
+        "expected_output": "1\n-1\n2",
+        "is_sample": false
+      },
+      {
+        "input_data": "2\nPUT 1 1\nPUT 1 2\nGET 1",
+        "expected_output": "2",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\nPUT 1 1\nPUT 2 2\nPUT 3 3\nGET 1\nPUT 4 4\nGET 2",
+        "expected_output": "1\n-1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Hash Map"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Median of Two Sorted Arrays",
+    "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. The overall run time complexity should be O(log(m+n)).\n\n**Input Format:** First line: m n (sizes). Second line: m integers (nums1). Third line: n integers (nums2).\n\n**Output Format:** The median as a decimal (e.g. 2.0 or 2.5). Print exactly one decimal place.\n\n**Constraints:** 1 â‰¤ m, n â‰¤ 1000, -10^6 â‰¤ nums[i] â‰¤ 10^6",
+    "difficulty": "hard",
+    "sample_input": "2 2\n1 2\n3 4",
+    "sample_output": "2.5",
+    "test_cases": [
+      {
+        "input_data": "2 2\n1 2\n3 4",
+        "expected_output": "2.5",
+        "is_sample": true
+      },
+      {
+        "input_data": "2 1\n1 3\n2",
+        "expected_output": "2.0",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n1\n2",
+        "expected_output": "1.5",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 2\n2\n1 3",
+        "expected_output": "2.0",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Binary Search",
+      "Arrays"
+    ],
+    "companies": [
+      "Google",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Merge K Sorted Arrays",
+    "description": "Given k sorted arrays, merge them into one sorted array. This is a classic problem asked at Google and Meta to test understanding of heap/merge techniques.\n\n**Input Format:** First line: k (number of arrays). Then k lines: each line has n_i followed by n_i sorted integers.\n\n**Output Format:** Space-separated merged sorted array.\n\n**Constraints:** 1 â‰¤ k â‰¤ 100, 0 â‰¤ total elements â‰¤ 10^4",
+    "difficulty": "hard",
+    "sample_input": "3\n3 1 4 5\n2 1 3\n2 2 6",
+    "sample_output": "1 1 2 3 4 5 6",
+    "test_cases": [
+      {
+        "input_data": "3\n3 1 4 5\n2 1 3\n2 2 6",
+        "expected_output": "1 1 2 3 4 5 6",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\n2 1 2\n2 3 4",
+        "expected_output": "1 2 3 4",
+        "is_sample": false
+      },
+      {
+        "input_data": "1\n3 1 2 3",
+        "expected_output": "1 2 3",
+        "is_sample": false
+      },
+      {
+        "input_data": "4\n1 5\n1 1\n1 3\n1 2",
+        "expected_output": "1 2 3 5",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Heap",
+      "Arrays",
+      "Sorting"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Word Ladder",
+    "description": "Given a begin word, end word, and a word list, find the length of the shortest transformation sequence from begin to end such that only one letter can be changed at a time and each transformed word must exist in the word list. Return 0 if no such sequence exists.\n\n**Input Format:** First line: beginWord. Second line: endWord. Third line: n (word list size). Next n lines: words in the list.\n\n**Output Format:** Length of shortest transformation (including begin and end). Output 0 if impossible.\n\n**Constraints:** 1 â‰¤ |word| â‰¤ 10, beginWord â‰  endWord, 1 â‰¤ n â‰¤ 5000",
+    "difficulty": "hard",
+    "sample_input": "hit\ncog\n6\nhot\ndot\ndog\nlot\nlog\ncog",
+    "sample_output": "5",
+    "test_cases": [
+      {
+        "input_data": "hit\ncog\n6\nhot\ndot\ndog\nlot\nlog\ncog",
+        "expected_output": "5",
+        "is_sample": true
+      },
+      {
+        "input_data": "hit\ncog\n6\nhot\ndot\ndog\nlot\nlog",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "a\nc\n3\na\nb\nc",
+        "expected_output": "2",
+        "is_sample": false
+      },
+      {
+        "input_data": "hot\ndot\n2\nhot\ndot",
+        "expected_output": "2",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Graph"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Course Schedule",
+    "description": "There are numCourses courses labeled 0 to numCourses-1. Some courses have prerequisites. Given the total number of courses and a list of prerequisite pairs [a,b] meaning you must take b before a, determine if you can finish all courses.\n\n**Input Format:** First line: numCourses and number of prerequisite pairs. Each following line: a b (take b before a).\n\n**Output Format:** YES if you can finish all courses, NO otherwise.\n\n**Constraints:** 1 â‰¤ numCourses â‰¤ 2000, 0 â‰¤ prerequisites â‰¤ 5000",
+    "difficulty": "hard",
+    "sample_input": "2 1\n1 0",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "2 1\n1 0",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "2 2\n1 0\n0 1",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "3 3\n1 0\n2 0\n2 1",
+        "expected_output": "YES",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 0",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Graph"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Sliding Window Maximum",
+    "description": "You are given an array of integers nums and an integer k. There is a sliding window of size k that moves from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position, return the maximum element in the current window. For nums = [1,3,-1,-3,5,3,6,7] and k = 3, the result is [3,3,5,5,6,7].\n\n**Input Format:** First line: n and k (space-separated). Second line: n space-separated integers.\n\n**Output Format:** Space-separated maximum values for each window position.\n\n**Constraints:** 1 â‰¤ k â‰¤ n â‰¤ 10^5, -10^4 â‰¤ nums[i] â‰¤ 10^4",
+    "difficulty": "hard",
+    "sample_input": "8 3\n1 3 -1 -3 5 3 6 7",
+    "sample_output": "3 3 5 5 6 7",
+    "test_cases": [
+      {
+        "input_data": "8 3\n1 3 -1 -3 5 3 6 7",
+        "expected_output": "3 3 5 5 6 7",
+        "is_sample": true
+      },
+      {
+        "input_data": "1 1\n1",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "4 2\n1 2 3 4",
+        "expected_output": "2 3 4",
+        "is_sample": false
+      },
+      {
+        "input_data": "5 2\n3 1 4 2 5",
+        "expected_output": "3 4 4 5",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sliding Window",
+      "Arrays",
+      "Heap"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft"
+    ]
+  },
+  {
+    "title": "Minimum Window Substring",
+    "description": "Given two strings s and t, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If no such substring exists, return the empty string.\n\n**Input Format:** First line: string s. Second line: string t.\n\n**Output Format:** The minimum window substring. If multiple exist, any valid one.\n\n**Constraints:** 1 â‰¤ |s|, |t| â‰¤ 10^5, s and t consist of uppercase and lowercase English letters",
+    "difficulty": "hard",
+    "sample_input": "ADOBECODEBANC\nABC",
+    "sample_output": "BANC",
+    "test_cases": [
+      {
+        "input_data": "ADOBECODEBANC\nABC",
+        "expected_output": "BANC",
+        "is_sample": true
+      },
+      {
+        "input_data": "a\na",
+        "expected_output": "a",
+        "is_sample": false
+      },
+      {
+        "input_data": "a\naa",
+        "expected_output": "",
+        "is_sample": false
+      },
+      {
+        "input_data": "aa\naa",
+        "expected_output": "aa",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Sliding Window",
+      "Strings"
+    ],
+    "companies": [
+      "Google",
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Trapping Rain Water",
+    "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.\n\n**Input Format:** First line: n. Second line: n integers (heights).\n\n**Output Format:** Total amount of rainwater that can be trapped.\n\n**Constraints:** 1 â‰¤ n â‰¤ 2Ã—10^5, 0 â‰¤ height[i] â‰¤ 10^5",
+    "difficulty": "hard",
+    "sample_input": "12\n0 1 0 2 1 0 1 3 2 1 2 1",
+    "sample_output": "6",
+    "test_cases": [
+      {
+        "input_data": "12\n0 1 0 2 1 0 1 3 2 1 2 1",
+        "expected_output": "6",
+        "is_sample": true
+      },
+      {
+        "input_data": "3\n3 0 3",
+        "expected_output": "3",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n3 2 1",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "6\n4 2 0 3 2 5",
+        "expected_output": "9",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Arrays"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "3Sum",
+    "description": "Given an integer array, find all unique triplets that sum to zero. The solution set must not contain duplicate triplets. Output each triplet as three space-separated numbers in ascending order, one triplet per line. Triplets can be in any order.\n\n**Input Format:** First line: n. Second line: n integers.\n\n**Output Format:** Each line: three space-separated integers (a b c with a â‰¤ b â‰¤ c). Output nothing if no triplets.\n\n**Constraints:** 3 â‰¤ n â‰¤ 3000, -10^5 â‰¤ nums[i] â‰¤ 10^5",
+    "difficulty": "medium",
+    "sample_input": "6\n-1 0 1 2 -1 -4",
+    "sample_output": "-1 -1 2\n-1 0 1",
+    "test_cases": [
+      {
+        "input_data": "6\n-1 0 1 2 -1 -4",
+        "expected_output": "-1 -1 2\n-1 0 1",
+        "is_sample": true
+      },
+      {
+        "input_data": "3\n0 0 0",
+        "expected_output": "0 0 0",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n0 1 2",
+        "expected_output": "",
+        "is_sample": false
+      },
+      {
+        "input_data": "4\n-2 0 1 1",
+        "expected_output": "-2 1 1",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Two Pointers",
+      "Arrays"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "N-Queens",
+    "description": "Place n queens on an nÃ—n chessboard such that no two queens attack each other. Output all distinct solutions.\n\n**Input Format:** A single integer n.\n\n**Output Format:** For each solution, output n lines where each line has n characters: '.' for empty, 'Q' for queen. Separate solutions with a blank line.\n\n**Constraints:** 1 â‰¤ n â‰¤ 9",
+    "difficulty": "hard",
+    "sample_input": "4",
+    "sample_output": ".Q..\n...Q\nQ...\n..Q.\n\n..Q.\nQ...\n...Q\n.Q..",
+    "test_cases": [
+      {
+        "input_data": "4",
+        "expected_output": ".Q..\n...Q\nQ...\n..Q.\n\n..Q.\nQ...\n...Q\n.Q..",
+        "is_sample": true
+      },
+      {
+        "input_data": "1",
+        "expected_output": "Q",
+        "is_sample": false
+      },
+      {
+        "input_data": "2",
+        "expected_output": "",
+        "is_sample": false
+      },
+      {
+        "input_data": "3",
+        "expected_output": "",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "Recursion",
+      "Graph"
+    ],
+    "companies": [
+      "Amazon",
+      "Google"
+    ]
+  },
+  {
+    "title": "Longest Valid Parentheses",
+    "description": "Given a string containing only '(' and ')', find the length of the longest valid (well-formed) parentheses substring.\n\n**Input Format:** A single string containing only '(' and ')'.\n\n**Output Format:** The length of the longest valid parentheses substring.\n\n**Constraints:** 0 â‰¤ |s| â‰¤ 3Ã—10^4",
+    "difficulty": "hard",
+    "sample_input": "(()",
+    "sample_output": "2",
+    "test_cases": [
+      {
+        "input_data": "(()",
+        "expected_output": "2",
+        "is_sample": true
+      },
+      {
+        "input_data": ")()())",
+        "expected_output": "4",
+        "is_sample": false
+      },
+      {
+        "input_data": "",
+        "expected_output": "0",
+        "is_sample": false
+      },
+      {
+        "input_data": "()(())",
+        "expected_output": "6",
+        "is_sample": false
+      }
+    ],
+    "tags": [
+      "DP",
+      "Stack"
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Number of Islands",
+    "description": "Given a 2D grid of 1 (land) and 0 (water), count the number of islands. An island is surrounded by water and formed by connecting adjacent lands horizontally or vertically.\n\n**Input Format:** First line: rows cols. Next rows lines: space-separated 0s and 1s.\n\n**Output Format:** Number of islands.\n\n**Constraints:** 1 ≤ rows, cols ≤ 300",
+    "difficulty": "medium",
+    "tags": [
+      "Graph",
+      "Arrays"
+    ],
+    "sample_input": "4 5\n1 1 1 1 0\n1 1 0 1 0\n1 1 0 0 0\n0 0 0 0 0",
+    "sample_output": "1",
+    "test_cases": [
+      {
+        "input_data": "4 5\n1 1 1 1 0\n1 1 0 1 0\n1 1 0 0 0\n0 0 0 0 0",
+        "expected_output": "1",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 3\n1 1 0\n1 1 0\n0 0 1",
+        "expected_output": "2",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 1\n1",
+        "expected_output": "1",
+        "is_sample": false
+      },
+      {
+        "input_data": "2 2\n0 0\n0 0",
+        "expected_output": "0",
+        "is_sample": false
+      }
+    ],
+    "companies": [
+      "Amazon",
+      "Microsoft",
+      "Meta"
+    ]
+  },
+  {
+    "title": "Keys and Rooms",
+    "description": "There are n rooms labeled 0 to n-1. Each room has some keys. You start in room 0. Return YES if you can visit every room, NO otherwise.\n\n**Input Format:** First line: n. Next n lines: each line has k then k key numbers (room indices you can go to).\n\n**Output Format:** YES or NO.\n\n**Constraints:** 2 ≤ n ≤ 1000",
+    "difficulty": "medium",
+    "tags": [
+      "Graph"
+    ],
+    "sample_input": "4\n1 1\n1 2\n1 3\n0",
+    "sample_output": "YES",
+    "test_cases": [
+      {
+        "input_data": "4\n1 1\n1 2\n1 3\n0",
+        "expected_output": "YES",
+        "is_sample": true
+      },
+      {
+        "input_data": "2\n1 1\n0",
+        "expected_output": "NO",
+        "is_sample": false
+      },
+      {
+        "input_data": "2\n1 1\n1 0",
+        "expected_output": "YES",
+        "is_sample": false
+      },
+      {
+        "input_data": "3\n1 1\n1 2\n0",
+        "expected_output": "YES",
+        "is_sample": false
+      }
+    ],
+    "companies": [
+      "Google"
+    ]
+  },
+  {
+    "title": "Find the Town Judge",
+    "description": "In a town of n people labeled 1 to n, there is a town judge. The judge trusts nobody; everybody trusts the judge. Given trust array [a,b] meaning a trusts b, find the judge. Return -1 if no judge.\n\n**Input Format:** First line: n and number of trust pairs. Next lines: a b (a trusts b).\n\n**Output Format:** The judge label or -1.\n\n**Constraints:** 1 ≤ n ≤ 1000",
+    "difficulty": "easy",
+    "tags": [
+      "Graph"
+    ],
+    "sample_input": "2 1\n1 2",
+    "sample_output": "2",
+    "test_cases": [
+      {
+        "input_data": "2 1\n1 2",
+        "expected_output": "2",
+        "is_sample": true
+      },
+      {
+        "input_data": "3 2\n1 3\n2 3",
+        "expected_output": "3",
+        "is_sample": false
+      },
+      {
+        "input_data": "3 3\n1 3\n2 3\n3 1",
+        "expected_output": "-1",
+        "is_sample": false
+      },
+      {
+        "input_data": "1 0",
+        "expected_output": "1",
+        "is_sample": false
+      }
+    ],
+    "companies": [
+      "Amazon"
+    ]
+  }
+]
