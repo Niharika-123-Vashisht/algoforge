@@ -1,0 +1,27 @@
+# Render Blueprint: AlgoForge Backend
+# Deploy from Dashboard: New > Web Service, connect repo, set Root Directory to empty (repo root)
+# Then set Root Directory to "code_assessment_platform" in the service settings.
+# Or use this file: Render will prompt to create a Web Service from it.
+
+services:
+  - type: web
+    name: algoforge-api
+    runtime: python
+    region: oregon
+    plan: free
+    rootDir: code_assessment_platform
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn config.wsgi:application --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: USE_SQLITE
+        value: "1"
+      - key: DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "algoforge-api.onrender.com"
+      - key: CORS_ORIGINS
+        value: "https://algoforge.vercel.app"

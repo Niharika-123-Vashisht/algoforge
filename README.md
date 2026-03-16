@@ -109,6 +109,19 @@ Use the frontend in the browser; it talks to the Django backend for auth, proble
 
 ---
 
+## Live Demo
+
+You can try AlgoForge online without running it locally:
+
+| | URL |
+|---|-----|
+| **Frontend** | [https://algoforge.vercel.app](https://algoforge.vercel.app) |
+| **Backend API** | [https://algoforge-api.onrender.com](https://algoforge-api.onrender.com) |
+
+Deployment: backend on [Render](https://render.com), frontend on [Vercel](https://vercel.com). See [DEPLOYMENT.md](DEPLOYMENT.md) for step-by-step deployment instructions.
+
+---
+
 ## Future Improvements
 
 - Add more programming languages and editor themes.
