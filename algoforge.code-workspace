@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "path": "AlgoForge/code_assessment_platform",
+      "name": "Backend"
+    },
+    {
+      "path": "AlgoForge/coding_assessment_frontend",
+      "name": "Frontend"
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:Backend}/venv/Scripts/python.exe",
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.cwd": "${workspaceFolder:Backend}"
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "dbaeumer.vscode-eslint",
+      "bradlc.vscode-tailwindcss"
+    ]
+  }
+}
