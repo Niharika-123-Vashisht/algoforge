@@ -12,6 +12,10 @@ node_modules/
 .idea/
 extensions/
 
+# Deployment files (keep locally, do not track)
+DEPLOYMENT.md
+render.yaml
+
 # Other projects (keep locally, do not track)
 web_intelligence/
 
