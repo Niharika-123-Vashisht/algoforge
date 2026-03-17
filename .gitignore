@@ -12,6 +12,9 @@ node_modules/
 .idea/
 extensions/
 
+# Other projects (keep locally, do not track)
+web_intelligence/
+
 # Python
 __pycache__/
 *.py[cod]
