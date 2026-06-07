@@ -6,7 +6,7 @@ export default function GlobalError() {
   if (!error) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-50 max-w-sm rounded-md bg-red-600/90 text-white shadow-lg">
+    <div className="fixed top-16 right-4 z-50 max-w-sm rounded-md bg-red-600/90 text-white shadow-lg">
       <div className="p-4 flex items-start gap-3">
         <div className="flex-1 text-sm">{error}</div>
         <button

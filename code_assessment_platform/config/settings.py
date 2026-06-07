@@ -191,3 +191,37 @@ SOCIALACCOUNT_PROVIDERS = {
 # Judge0 API
 JUDGE0_BASE_URL = os.environ.get('JUDGE0_BASE_URL', 'https://ce.judge0.com')
 JUDGE0_API_KEY = os.environ.get('JUDGE0_API_KEY', '')  # Optional for public CE
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{levelname}] {asctime} {name}: {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'submissions.services': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'submissions.views': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'users.views': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

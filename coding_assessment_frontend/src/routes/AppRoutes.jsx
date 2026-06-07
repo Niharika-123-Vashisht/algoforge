@@ -14,72 +14,62 @@ import Leaderboard from "../features/leaderboard/pages/Leaderboard.jsx";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/problems" replace />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/oauth/callback" element={<OAuthCallback />} />
+      <Route element={<AppLayout />}>
+        <Route path="/" element={<Navigate to="/problems" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/oauth/callback" element={<OAuthCallback />} />
 
-      <Route
-        path="/problems"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+        <Route
+          path="/problems"
+          element={
+            <ProtectedRoute>
               <ProblemsPage />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/problems/:id"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/problems/:id"
+          element={
+            <ProtectedRoute>
               <ProblemDetailPage />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/submissions"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/submissions"
+          element={
+            <ProtectedRoute>
               <SubmissionList />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/leaderboard"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
               <Leaderboard />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/submissions/:id"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/submissions/:id"
+          element={
+            <ProtectedRoute>
               <SubmissionDetail />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <AppLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
               <Profile />
-            </AppLayout>
-          </ProtectedRoute>
-        }
-      />
-      <Route path="*" element={<Navigate to="/" replace />} />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
     </Routes>
   );
 }

@@ -1,17 +1,16 @@
 """
-Judge0 API integration for code execution.
-All user code runs ONLY inside Judge0's sandbox (isolate) — never on the Django server.
-
-See: https://github.com/judge0/judge0/blob/master/docs/api/submissions/submissions.md
-
-Security: enable_network=false, cpu/wall/memory limits cap infinite loops and resource abuse.
-Dangerous operations (os.system, subprocess, file access) are contained by the sandbox;
-we do not execute user code locally.
+Judge0 API integration and leaderboard scoring.
 """
+import logging
+
 import requests
 from django.conf import settings
+from django.contrib.auth import get_user_model
+from django.db import transaction
+from django.db.models import F
 
-# Judge0 status IDs -> our internal status slug
+logger = logging.getLogger(__name__)
+
 JUDGE0_STATUS_MAP = {
     1: "pending",
     2: "running",
@@ -24,7 +23,6 @@ JUDGE0_STATUS_MAP = {
     9: "internal_error",
 }
 
-# Human-readable verdicts for API clients (HackerRank-style)
 VERDICT_DISPLAY = {
     "accepted": "Accepted",
     "wrong_answer": "Wrong Answer",
@@ -37,12 +35,10 @@ VERDICT_DISPLAY = {
     "running": "Running",
 }
 
-# Platform-wide caps (never exceed these even if problem allows more)
 MAX_CPU_TIME_SEC = 2
 MAX_MEMORY_MB = 256
-MAX_WALL_TIME_SEC = 15  # wall clock; catches sleep/blocking beyond CPU limit
-MAX_FILE_SIZE_KB = 1024  # limit files created in sandbox
-# Truncate huge stdout/stderr from Judge0 to protect DB and responses
+MAX_WALL_TIME_SEC = 15
+MAX_FILE_SIZE_KB = 1024
 MAX_STDOUT_STDERR_CHARS = 50_000
 
 
@@ -71,16 +67,6 @@ def execute_code(
     time_limit: int = None,
     memory_limit_mb: int = None,
 ) -> dict:
-    """
-    Submit code to Judge0 only (wait=true). Never runs code on Django.
-
-    Limits:
-    - cpu_time_limit: capped at MAX_CPU_TIME_SEC
-    - wall_time_limit: MAX_WALL_TIME_SEC (prevents hanging beyond CPU accounting)
-    - memory_limit: capped at MAX_MEMORY_MB (KB sent to Judge0)
-    - enable_network: false
-    - max_file_size: limits sandbox file I/O
-    """
     cpu_sec = _cap_cpu_time(time_limit if time_limit is not None else MAX_CPU_TIME_SEC)
     memory_kb = _cap_memory_kb(memory_limit_mb if memory_limit_mb is not None else MAX_MEMORY_MB)
 
@@ -104,7 +90,6 @@ def execute_code(
     if expected_output is not None:
         payload["expected_output"] = expected_output
 
-    # HTTP timeout must exceed wall_time_limit so Judge0 can finish and return
     http_timeout = int(MAX_WALL_TIME_SEC) + 25
 
     try:
@@ -157,3 +142,183 @@ def execute_code(
 
 def verdict_to_display(status_slug: str) -> str:
     return VERDICT_DISPLAY.get(status_slug, status_slug.replace("_", " ").title())
+
+
+def parse_bool(value, default=False):
+    if value is None:
+        return default
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        return value.strip().lower() in ('true', '1', 'yes', 'on')
+    return bool(value)
+
+
+def _total_test_count(problem):
+    if hasattr(problem, '_prefetched_objects_cache') and 'test_cases' in problem._prefetched_objects_cache:
+        return len(problem.test_cases.all())
+    return problem.test_cases.count()
+
+
+def is_sample_only_submission(submission, problem=None):
+    """Detect Run (sample-only) submissions even for legacy rows."""
+    if getattr(submission, 'is_sample_run', False):
+        return True
+
+    problem = problem or submission.problem
+    total_tests = _total_test_count(problem)
+    results_len = len(submission.test_results or [])
+    return total_tests > 0 and results_len < total_tests
+
+
+def is_complete_acceptance(submission, problem=None):
+    """
+    A full submit that passed every executed test case.
+    Trusts submission.status='accepted' for non-sample runs.
+    """
+    if submission.status != 'accepted':
+        return False
+    if is_sample_only_submission(submission, problem):
+        return False
+
+    results = submission.test_results or []
+    if not results:
+        return False
+
+    return all(result.get('status') == 'accepted' for result in results)
+
+
+def user_has_solved_problem(user, problem, exclude_submission_id=None):
+    """True if user already received points for this problem."""
+    from .models import Submission
+
+    awarded_qs = Submission.objects.filter(
+        user=user,
+        problem=problem,
+        points_awarded=True,
+    )
+    if exclude_submission_id:
+        awarded_qs = awarded_qs.exclude(id=exclude_submission_id)
+    if awarded_qs.exists():
+        return True
+
+    queryset = Submission.objects.filter(
+        user=user,
+        problem=problem,
+        status='accepted',
+        is_sample_run=False,
+    )
+    if exclude_submission_id:
+        queryset = queryset.exclude(id=exclude_submission_id)
+
+    for prior in queryset.select_related('problem').iterator():
+        if is_complete_acceptance(prior, problem):
+            return True
+    return False
+
+
+def award_leaderboard_points(user, problem, submission):
+    """
+    Award problem points on first complete acceptance.
+    Returns (awarded, points_added, new_total).
+    """
+    User = get_user_model()
+
+    logger.info(
+        '[LEADERBOARD] Evaluating points: user_id=%s problem_id=%s submission_id=%s '
+        'verdict=%s is_sample_run=%s results=%s',
+        user.id,
+        problem.id,
+        submission.id,
+        submission.status,
+        submission.is_sample_run,
+        len(submission.test_results or []),
+    )
+
+    if not is_complete_acceptance(submission, problem):
+        logger.info(
+            '[LEADERBOARD] Points NOT awarded: not a complete full acceptance '
+            '(user_id=%s, problem_id=%s, submission_id=%s)',
+            user.id,
+            problem.id,
+            submission.id,
+        )
+        user = User.objects.filter(pk=user.pk).only('points').first()
+        return False, 0, user.points if user else 0
+
+    with transaction.atomic():
+        locked_user = User.objects.select_for_update().get(pk=user.pk)
+
+        if user_has_solved_problem(locked_user, problem, exclude_submission_id=submission.id):
+            logger.info(
+                '[LEADERBOARD] Points NOT awarded: duplicate solve '
+                '(user_id=%s, problem_id=%s, submission_id=%s)',
+                locked_user.id,
+                problem.id,
+                submission.id,
+            )
+            return False, 0, locked_user.points
+
+        from .models import Submission as SubmissionModel
+
+        points_to_add = problem.difficulty_points()
+        User.objects.filter(pk=locked_user.pk).update(points=F('points') + points_to_add)
+        SubmissionModel.objects.filter(pk=submission.pk).update(points_awarded=True)
+
+        locked_user.refresh_from_db(fields=['points'])
+        logger.info(
+            '[LEADERBOARD] Points AWARDED: user_id=%s problem_id=%s submission_id=%s '
+            'points_added=%s new_total=%s',
+            locked_user.id,
+            problem.id,
+            submission.id,
+            points_to_add,
+            locked_user.points,
+        )
+        return True, points_to_add, locked_user.points
+
+
+def recalculate_user_points(user):
+    """Rebuild a user's total points from accepted full submissions."""
+    from .models import Submission
+
+    solved_problem_ids = set()
+    total_points = 0
+
+    submissions = (
+        Submission.objects.filter(user=user, status='accepted')
+        .select_related('problem')
+        .prefetch_related('problem__test_cases')
+        .order_by('created_at')
+    )
+
+    for submission in submissions:
+        if submission.problem_id in solved_problem_ids:
+            continue
+        if is_complete_acceptance(submission):
+            total_points += submission.problem.difficulty_points()
+            solved_problem_ids.add(submission.problem_id)
+
+    return total_points
+
+
+def sync_user_points(user):
+    """Persist recalculated points for one user."""
+    User = get_user_model()
+    calculated = recalculate_user_points(user)
+    if user.points != calculated:
+        logger.info(
+            '[LEADERBOARD] Syncing user_id=%s points: %s -> %s',
+            user.id,
+            user.points,
+            calculated,
+        )
+        User.objects.filter(pk=user.pk).update(points=calculated)
+    return calculated
+
+
+def sync_all_user_points():
+    """Recalculate and persist points for every user."""
+    User = get_user_model()
+    for user in User.objects.all().iterator():
+        sync_user_points(user)

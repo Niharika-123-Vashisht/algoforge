@@ -1,12 +1,20 @@
+import logging
+
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
-from django.db import transaction
 
 from .models import Submission
 from .serializers import SubmissionListSerializer, SubmissionDetailSerializer, SubmissionCreateSerializer
-from .services import execute_code, verdict_to_display
+from .services import (
+    execute_code,
+    verdict_to_display,
+    parse_bool,
+    award_leaderboard_points,
+)
+
+logger = logging.getLogger(__name__)
 
 
 class SubmissionListCreateView(generics.ListCreateAPIView):
@@ -33,17 +41,24 @@ class SubmissionListCreateView(generics.ListCreateAPIView):
         language = serializer.validated_data['language']
         source_code = serializer.validated_data['source_code']
 
+        run_sample_only = parse_bool(request.data.get('run_sample_only'), default=False)
+
+        logger.info(
+            '[SUBMISSION] Create: user_id=%s problem_id=%s run_sample_only=%s',
+            request.user.id,
+            problem.id,
+            run_sample_only,
+        )
+
         submission = Submission.objects.create(
             user=request.user,
             problem=problem,
             language=language,
             source_code=source_code,
             status='pending',
+            is_sample_run=run_sample_only,
         )
 
-        run_sample_only = request.data.get('run_sample_only', False)
-
-        # Prefetch test cases; avoid N+1
         problem = (
             problem.__class__.objects.select_related('created_by')
             .prefetch_related('test_cases', 'submissions')
@@ -105,25 +120,46 @@ class SubmissionListCreateView(generics.ListCreateAPIView):
         submission.test_results = test_results
         submission.save()
 
+        logger.info(
+            '[SUBMISSION] Verdict: user_id=%s problem_id=%s submission_id=%s '
+            'verdict=%s passed=%s/%s is_sample_run=%s',
+            request.user.id,
+            problem.id,
+            submission.id,
+            submission.status,
+            passed_count,
+            len(test_cases),
+            submission.is_sample_run,
+        )
+
+        points_awarded = 0
+        user_points = request.user.points
         if submission.status == 'accepted' and not run_sample_only:
-            with transaction.atomic():
-                already_accepted = Submission.objects.filter(
-                    user=request.user,
-                    problem=problem,
-                    status='accepted',
-                ).exclude(id=submission.id).exists()
-                if not already_accepted:
-                    request.user.points += problem.difficulty_points()
-                    request.user.save(update_fields=['points'])
+            awarded, points_awarded, user_points = award_leaderboard_points(
+                request.user,
+                problem,
+                submission,
+            )
+            logger.info(
+                '[SUBMISSION] Points result: user_id=%s problem_id=%s submission_id=%s '
+                'awarded=%s points_awarded=%s user_points=%s',
+                request.user.id,
+                problem.id,
+                submission.id,
+                awarded,
+                points_awarded,
+                user_points,
+            )
 
         return self._submission_response(
             submission,
             passed=passed_count,
             total=len(test_cases),
+            points_awarded=points_awarded,
+            user_points=user_points,
         )
 
-    def _submission_response(self, submission, passed, total):
-        """Merge serializer output with HackerRank-style verdict summary."""
+    def _submission_response(self, submission, passed, total, points_awarded=0, user_points=None):
         data = SubmissionDetailSerializer(submission).data
         time_val = submission.time_seconds
         memory_val = submission.memory_kb
@@ -132,11 +168,13 @@ class SubmissionListCreateView(generics.ListCreateAPIView):
         data['total_test_cases'] = total
         data['time'] = float(time_val) if time_val is not None else None
         data['memory'] = int(memory_val) if memory_val is not None else None
+        data['points_awarded'] = points_awarded
+        if user_points is not None:
+            data['user_points'] = user_points
         return Response(data, status=status.HTTP_201_CREATED)
 
 
 class SubmissionDetailView(generics.RetrieveAPIView):
-    """Retrieve a single submission."""
     queryset = Submission.objects.select_related('user', 'problem', 'language')
     serializer_class = SubmissionDetailSerializer
     permission_classes = [IsAuthenticated]

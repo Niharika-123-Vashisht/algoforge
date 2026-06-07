@@ -41,19 +41,12 @@ export default function RegisterPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <div className="text-slate-400">Loading...</div>
-      </div>
-    );
+    return <div className="text-slate-400">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-slate-100 py-12">
-      <Link to="/" className="text-xl font-semibold text-indigo-200 mb-6 hover:text-indigo-100">
-        AlgoForge
-      </Link>
-      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-lg p-6">
+    <div className="w-full max-w-md">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
         <h1 className="text-2xl font-semibold mb-1">
           Create your AlgoForge account and start solving coding challenges
         </h1>

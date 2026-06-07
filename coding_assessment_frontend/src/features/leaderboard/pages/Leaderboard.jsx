@@ -19,7 +19,12 @@ export default function Leaderboard() {
     fetchLeaderboard()
       .then((res) => {
         if (active) {
-          const items = res?.results || res || [];
+          const items = res?.results || [];
+          console.log("[LEADERBOARD] Display entries:", items.map((e) => ({
+            userId: e.id,
+            username: e.username,
+            points: e.points,
+          })));
           setEntries(items);
         }
       })
@@ -89,7 +94,7 @@ export default function Leaderboard() {
                   </div>
                 </div>
                 <div className="col-span-3 text-right font-semibold">
-                  {entry.points}
+                  {entry.points ?? 0}
                 </div>
               </div>
             );

@@ -32,6 +32,14 @@ class Submission(models.Model):
     )
     source_code = models.TextField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    is_sample_run = models.BooleanField(
+        default=False,
+        help_text='True when only sample test cases were executed (Run), not a full submit.',
+    )
+    points_awarded = models.BooleanField(
+        default=False,
+        help_text='True when leaderboard points were granted for this submission.',
+    )
     judge0_token = models.CharField(max_length=100, blank=True)
     stdout = models.TextField(blank=True)
     stderr = models.TextField(blank=True)

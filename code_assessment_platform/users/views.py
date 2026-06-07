@@ -1,8 +1,9 @@
+import logging
+
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
-import os
 from urllib.parse import urlencode
 from rest_framework.views import APIView
 from django.shortcuts import redirect
@@ -13,9 +14,11 @@ from django.urls import reverse_lazy
 from dj_rest_auth.registration.views import SocialLoginView
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from submissions.services import sync_all_user_points
 from .serializers import UserRegistrationSerializer, UserProfileSerializer, UserListSerializer, LeaderboardSerializer
 
 User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 def get_tokens_for_user(user):
@@ -28,7 +31,6 @@ def get_tokens_for_user(user):
 
 
 class RegisterView(generics.CreateAPIView):
-    """Register a new user. POST: username, email, password. Returns token and user."""
     queryset = User.objects.all()
     serializer_class = UserRegistrationSerializer
     permission_classes = [AllowAny]
@@ -42,7 +44,6 @@ class RegisterView(generics.CreateAPIView):
 
 
 class LoginView(APIView):
-    """Login with email and password. POST: email, password. Returns token and user."""
     permission_classes = [AllowAny]
 
     def post(self, request):
@@ -71,7 +72,6 @@ class LoginView(APIView):
 
 
 class ProfileView(generics.RetrieveUpdateAPIView):
-    """Get or update current user profile. Requires JWT."""
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
 
@@ -80,19 +80,27 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
 
 class UserListView(generics.ListAPIView):
-    """List users (e.g. for leaderboard). Authenticated."""
     queryset = User.objects.all()
     serializer_class = UserListSerializer
     permission_classes = [IsAuthenticated]
 
 
 class LeaderboardView(generics.ListAPIView):
-    """Top 10 users by points."""
+    """All users ranked by points (highest first)."""
     serializer_class = LeaderboardSerializer
     permission_classes = [IsAuthenticated]
+    pagination_class = None
 
     def get_queryset(self):
-        return User.objects.order_by("-points", "username")[:10]
+        return User.objects.order_by('-points', 'username')
+
+    def list(self, request, *args, **kwargs):
+        sync_all_user_points()
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        data = serializer.data
+        logger.info('[LEADERBOARD] API response: %s', data)
+        return Response(data)
 
 
 class GoogleLoginView(SocialLoginView):
@@ -101,7 +109,6 @@ class GoogleLoginView(SocialLoginView):
 
 
 class LogoutView(APIView):
-    """Logout. Optionally blacklist refresh token if provided. Always returns success."""
     permission_classes = [AllowAny]
 
     def post(self, request):

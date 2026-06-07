@@ -29,17 +29,11 @@ export default function OAuthCallback() {
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-100">
-        <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-sm">
-          {error}
-        </div>
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-6 text-sm">
+        {error}
       </div>
     );
   }
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950 text-slate-100">
-      <LoadingState label="Signing you in..." />
-    </div>
-  );
+  return <LoadingState label="Signing you in..." />;
 }

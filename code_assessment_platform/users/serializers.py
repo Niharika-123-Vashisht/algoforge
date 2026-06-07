@@ -62,8 +62,11 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'bio', 'date_joined', 'created_at', 'updated_at')
-        read_only_fields = ('id', 'username', 'date_joined', 'created_at', 'updated_at')
+        fields = (
+            'id', 'username', 'email', 'first_name', 'last_name', 'bio',
+            'points', 'date_joined', 'created_at', 'updated_at',
+        )
+        read_only_fields = ('id', 'username', 'points', 'date_joined', 'created_at', 'updated_at')
 
 
 class UserListSerializer(serializers.ModelSerializer):

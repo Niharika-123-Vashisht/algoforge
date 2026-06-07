@@ -79,6 +79,10 @@ export default function Profile() {
           <span className="text-slate-400 text-sm">Solved Problems: </span>
           <span>{solvedCount}</span>
         </div>
+        <div>
+          <span className="text-slate-400 text-sm">Leaderboard Points: </span>
+          <span>{user.points ?? 0}</span>
+        </div>
       </div>
 
       <div className="bg-slate-900 border border-slate-800 rounded-lg p-4">

@@ -12,7 +12,19 @@ export async function fetchSubmissionById(id) {
 }
 
 export async function createSubmission(payload) {
+  console.log("[LEADERBOARD] Submitting code:", {
+    problemId: payload.problem,
+    runSampleOnly: payload.run_sample_only,
+  });
   const { data } = await api.post(endpoints.submissions, payload);
+  console.log("[LEADERBOARD] Submission response:", {
+    submissionId: data.id,
+    userId: data.user,
+    problemId: data.problem,
+    verdict: data.status,
+    pointsAwarded: data.points_awarded,
+    userPoints: data.user_points,
+  });
   return data;
 }
 

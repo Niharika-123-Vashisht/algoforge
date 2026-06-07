@@ -85,6 +85,20 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
+  const refreshProfile = async () => {
+    const token = getAccessToken();
+    if (!token || isTokenExpired(token)) {
+      return;
+    }
+    try {
+      const data = await getProfile();
+      setUser(data);
+    } catch {
+      clearTokens();
+      setUser(null);
+    }
+  };
+
   const value = useMemo(
     () => ({
       user,
@@ -92,6 +106,7 @@ export function AuthProvider({ children }) {
       login,
       register,
       logout,
+      refreshProfile,
       isAuthenticated: !!user && !isTokenExpired(getAccessToken())
     }),
     [user, isLoading]

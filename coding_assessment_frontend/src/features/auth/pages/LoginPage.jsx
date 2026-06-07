@@ -36,19 +36,12 @@ export default function LoginPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <div className="text-slate-400">Loading...</div>
-      </div>
-    );
+    return <div className="text-slate-400">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-slate-950 text-slate-100">
-      <Link to="/" className="text-xl font-semibold text-indigo-200 mb-6 hover:text-indigo-100">
-        AlgoForge
-      </Link>
-      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-lg p-6">
+    <div className="w-full max-w-md">
+      <div className="bg-slate-900 border border-slate-800 rounded-lg p-6">
         <h1 className="text-2xl font-semibold mb-1">Login to AlgoForge</h1>
         <p className="text-sm text-slate-400 mb-4">
           Enter your email and password to access your account

@@ -11,6 +11,7 @@ import { getErrorMessage } from "../../../utils/error.js";
 import { getBoilerplate } from "../utils/boilerplate.js";
 import { triggerLeaderboardRefresh } from "../../../utils/leaderboardEvents.js";
 import { useToast } from "../../../contexts/ToastContext.jsx";
+import { useAuth } from "../../../contexts/AuthContext.jsx";
 
 const DIFFICULTY_STYLES = {
   easy: "bg-emerald-500/20 text-emerald-400 border-emerald-500/40",
@@ -22,6 +23,7 @@ export default function ProblemDetailPage() {
   const { id } = useParams();
   const { problem, loading, error, refetch } = useProblemDetail(id);
   const { addToast } = useToast();
+  const { refreshProfile } = useAuth();
   const [languages, setLanguages] = useState([]);
   const [languageId, setLanguageId] = useState("");
   const [languageSlug, setLanguageSlug] = useState("");
@@ -93,8 +95,20 @@ export default function ProblemDetailPage() {
       setResult(submission);
       setLastAction("submit");
       if (submission?.status === "accepted") {
+        console.log("[LEADERBOARD] Accepted submit:", {
+          userId: submission.user,
+          problemId: submission.problem,
+          verdict: submission.status,
+          pointsAwarded: submission.points_awarded,
+          userPoints: submission.user_points,
+        });
         triggerLeaderboardRefresh();
-        addToast("Accepted! Well done!", "success");
+        refreshProfile();
+        const pointsMsg =
+          submission.points_awarded > 0
+            ? ` +${submission.points_awarded} points`
+            : "";
+        addToast(`Accepted! Well done!${pointsMsg}`, "success");
       } else {
         addToast("Submission completed. Check the result.", "info");
       }
@@ -124,7 +138,7 @@ export default function ProblemDetailPage() {
   const diffStyle = DIFFICULTY_STYLES[difficulty] || DIFFICULTY_STYLES.easy;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-8rem)] min-h-[600px]">
+    <div className="flex flex-col w-full h-[calc(100vh-7rem)] min-h-[600px]">
       <div className="flex flex-col lg:flex-row flex-1 min-h-0 gap-4">
         {/* Left: Problem description */}
         <div className="lg:w-[45%] xl:w-[42%] flex flex-col min-h-0 border border-slate-700/60 rounded-lg bg-slate-900/50 overflow-hidden">
